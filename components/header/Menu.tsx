@@ -5,7 +5,7 @@ import Link from 'next/link';
 import  { useEffect, useState } from 'react'
 
 const Menu = () => {
-    const {items } = useCartService();
+    const {items, init } = useCartService();
     const [mounted, setMounted] = useState(false)
 
     
@@ -14,7 +14,8 @@ const Menu = () => {
     }, []);
     
     const signoutHandler = () => {
-      signOut({ callbackUrl: '/signin'})
+      signOut({ callbackUrl: '/signin'});
+      init();
     }
     const { data: session} = useSession();
     // console.log(session?.user)
@@ -60,7 +61,12 @@ const Menu = () => {
                       className=' menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-520'
                     >
                       <li>
-                        <button type="button" onClick={signoutHandler}>Sign out</button>
+                        <Link href={"/order-history"}>Order History</Link>
+                      </li>
+                      <li>
+                        <button type="button" onClick={signoutHandler}>
+                          Sign out
+                        </button>
                       </li>
                     </ul>
                   </div>
