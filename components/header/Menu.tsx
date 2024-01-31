@@ -61,7 +61,12 @@ const Menu = () => {
                       className=' menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-520'
                     >
                       <li>
-                        <Link href={"/order-history"}>Order History</Link>
+                        <Link href={"/order-history"}>
+                          Order History
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={"/profile"}>Profile</Link>
                       </li>
                       <li>
                         <button type="button" onClick={signoutHandler}>
