@@ -1,8 +1,8 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt  from 'bcryptjs';
 import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
-import bcrypt  from 'bcryptjs';
 
 
 export const config = {
@@ -39,18 +39,7 @@ export const config = {
         error: '/signin',
     },
     callbacks: {
-        authorized({ request, auth}: any){
-            const protectedPaths = [
-                /\/shipping/,
-                /\/payment/,
-                /\/place-order/,
-                /\/order\/(.*)/,
-                /\/admin/,
-            ]
-            const { pathname } = request.nextUrl
-            if(protectedPaths.some((p)=> p.test(pathname))) return !!auth
-            return true
-        },
+        
         async jwt({ token, user, trigger, session }: any){
             if(user){
                 token.user = {

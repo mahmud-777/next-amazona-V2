@@ -1,6 +1,6 @@
 'use client'
 import useCartService from '@/lib/hooks/useCartStore';
-import { OrderItem } from '@/lib/models/OrderItem'
+import { OrderItem } from '@/lib/models/OrderModel'
 import { useRouter } from 'next/navigation'
 import React, {useEffect, useState} from 'react'
 
